@@ -80,6 +80,9 @@ module Guessr
       until @game.win?
         take_turn
       end
+      binding.pry
+      h = @game.score + @player.score
+      @player.update(score: h)
     end
 
     def play_again?
@@ -94,6 +97,8 @@ module Guessr
         new_game
         play_game
       end
+
+
       puts "Cool! Thanks for playing. :)"
     end
   end
