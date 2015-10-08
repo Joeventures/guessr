@@ -71,7 +71,8 @@ module Guessr
 
     def take_turn
       @game.show_progress if @game.last_guess
-      guess = prompt("What is your new guess? (1-1000)", /^\d{1,3}$/)
+      guess = prompt("What is your new guess? (1-1000) (Or press 'q' to quit abruptly)", /^\d{1,3}$|^[qQ]{1}$/)
+      exit if guess.upcase == "Q"
       @game.make_guess(guess.to_i)
     end
 
